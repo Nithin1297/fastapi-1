@@ -48,3 +48,7 @@ async def read_users_me(token: str = Depends(oauth2_scheme)):
     if user is None:
         raise credentials_exception
     return {"username": user["username"], "email": user["email"]}
+
+@router.get("/favicon.ico")
+async def favicon():
+    return {"message": "No favicon available"}

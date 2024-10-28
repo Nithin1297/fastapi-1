@@ -7,6 +7,11 @@ from typing import Union
 
 router = APIRouter()
 
+@router.get("/favicon.ico")
+async def favicon():
+    return {"message": "No favicon available"}  # You can return an actual favicon file if you have one.
+
+
 @router.get("/")
 async def get_todos():
     todos = list_serial(collection_name.find())
@@ -62,6 +67,3 @@ async def search_todos(query: Union[str, None] = Query(None), complete: Union[bo
     
     return search_results
 
-@router.get("/favicon.ico")
-async def favicon():
-    return {"message": "No favicon available"}
